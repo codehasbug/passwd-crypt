@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   }
 
   if(!strcmp(argv[2], "0")) {
-    argv[2] = crypt_gensalt("SHA512", 0, NULL, 0);
+    strcpy(argv[2], crypt_gensalt("SHA512", 0, NULL, 0));
   }
 
   char *buf = crypt((const char *)argv[1], (const char *)argv[2]);
@@ -18,6 +18,6 @@ int main(int argc, char *argv[]) {
     return -1;
   }
   
-  printf("crypt: %s\n", buf);
+  printf("%s", buf);
   return 0;
 }
